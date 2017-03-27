@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header" (click)="toggleDescription()">
+    Food {{food._id}}
+  </div>
+  <div *ngIf="showDescription" class="card-block">
+    <div class="card-text">
+      <span>{{food.description}}</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- todo
+
+  figure out how to display cards to users
+    - should I limit how many are shown
+    - should I simplify the database descriptions to be more generic (instead of 40 different cheeses, just have 1 cheese)
+
+-->

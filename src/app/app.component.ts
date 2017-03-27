@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  error: any;
+
+  setError(error: any){
+    this.error = error;
+  }
+
 }

@@ -1,0 +1,11 @@
+
+<div *ngIf="error" class="alert alert-app-level alert-danger">
+    <button type="button" class="close" aria-label="Close">
+        <clr-icon aria-hidden="true" shape="close" (click)="closeError()"></clr-icon>
+    </button>
+    <div class="alert-item">
+        <div class="alert-text">
+            {{error}}
+        </div>
+    </div>
+</div>

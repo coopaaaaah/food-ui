@@ -1,6 +1,6 @@
 import { FoodUiPage } from './app.po';
 
-describe('food-ui App', () => {
+describe('foods-ui App', () => {
   let page: FoodUiPage;
 
   beforeEach(() => {
