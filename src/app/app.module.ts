@@ -7,7 +7,7 @@ import { ClarityModule } from 'clarity-angular';
 import { AppComponent } from './app.component';
 import { ErrorContentComponent } from "./components/error-content/error-content";
 import { MainContentComponent } from "./routes/main-content/main-content";
-import {FoodCardComponent} from "./components/card/card";
+import {FoodCardComponent} from "./components/food-card/food-card";
 
 @NgModule({
   declarations: [

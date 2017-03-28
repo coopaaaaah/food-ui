@@ -1,27 +1,40 @@
 <div class="container" style="overflow-y: scroll">
 
-  <!--<div style="position: absolute; z-index: 10; background: white; color: black;">-->
-    <!--<h1>Available Food</h1>-->
+  <!--<div>-->
+  <!--<h1>Available Food</h1>-->
   <!--</div>-->
 
-  <form>
-    <section class="form-block">
-      <div class="form-group">
-        <input type="text" placeholder="Food" [(ngModel)]="description" name="food_form" size="45">
-        <button type="submit" class="btn btn-outline" (click)="collectFood()">Search For</button>
-      </div>
-    </section>
-  </form>
-
-
-  <div *ngIf="isError">
-    <h1>No Food Found!</h1>
+  <div *ngIf="loading" class="progress loop">
+    <progress></progress>
   </div>
 
+  <header class="header-6" style="position: relative; z-index: 10;">
+    <div class="branding">
+      <a href="..." class="nav-link">
+        <clr-icon shape="vmw-app"></clr-icon>
+        <span class="title">Food UI</span>
+      </a>
+    </div>
+    <div class="header-nav">
+      <form class="search">
+        <label for="search_input">
+          <input id="search_input" type="text" placeholder="Search for food..." [(ngModel)]="description"
+                 name="food_form" (keyup.enter)="collectFood()">
+          <button type="submit" class="btn btn-primary" (click)="collectFood()">Search</button>
+        </label>
+      </form>
+    </div>
+  </header>
 
-  <div class="row" *ngIf="foods">
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let food of foods">
-      <food-card [food]="food"></food-card>
+  <div>
+    <div *ngIf="isError">
+      <h1>Error Found! Check logs.</h1>
+    </div>
+
+    <div class="row" *ngIf="foods" style="position: relative">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let food of foods">
+        <food-card [food]="food"></food-card>
+      </div>
     </div>
   </div>
 

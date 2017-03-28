@@ -13,6 +13,8 @@ export class MainContentComponent implements OnInit {
 
   foodService: FoodService;
   isError: boolean;
+  showSearch: boolean;
+  loading: boolean;
   description: string;
   foods: Array<Food>;
 
@@ -21,25 +23,27 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.showSearch = false;
     this.isError = false;
     this.description = "";
     this.foods = [];
-
   }
 
   collectFood() {
 
+    this.errorEmitter.emit('');
     this.isError = false;
 
-    if(this.description.length == 0)
-      this.collectAllFood();
+    if (this.description.length == 0)
+      this.errorEmitter.emit('You cannot search for everything right now');
     else
       this.collectAllFoodByDescription();
 
   }
 
   private collectAllFoodByDescription() {
+
+    this.loading = true;
 
     this.foodService.getFoodByDescription(this.description).subscribe(
       data => {
@@ -50,27 +54,11 @@ export class MainContentComponent implements OnInit {
         this.errorEmitter.emit('There was an error contacting the server. ' + error);
       },
       () => {
+        this.loading = false;
         console.log('done --- collecting food')
       }
     )
 
   }
-
-  private collectAllFood() {
-
-    this.foodService.getAllFood().subscribe(
-      data => {
-        this.foods = data;
-      },
-      error => {
-        this.errorEmitter.emit('There was an error contacting the server.');
-      },
-      () => {
-        console.log('done --- collecting food')
-      }
-    )
-  }
-
-
 
 }

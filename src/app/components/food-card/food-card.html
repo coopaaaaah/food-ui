@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header" (click)="toggleDescription()">
+  <div class="card-header" (mouseover)="toggleDescription()" (mouseleave)="toggleDescription()">
     Food {{food._id}}
   </div>
   <div *ngIf="showDescription" class="card-block">

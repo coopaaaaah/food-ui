@@ -3,7 +3,7 @@ import {Food} from "../../../assets/Food";
 
 @Component({
   selector: 'food-card',
-  templateUrl: './card.html'
+  templateUrl: 'food-card.html'
 })
 export class FoodCardComponent {
 
